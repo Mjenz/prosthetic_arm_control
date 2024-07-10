@@ -1,0 +1,24 @@
+#
+# Copyright (c) 2019 Nordic Semiconductor ASA
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+sample:
+  name: MPU6050 Sensor Sample
+tests:
+  sample.sensor.mpu6050:
+    build_only: true
+    platform_allow: teensy41
+    tags: sensors
+    integration_platforms:
+      - teensy41
+
+  sample.basic.servo_motor:
+    tags:
+      - drivers
+      - pwm
+    depends_on: pwm
+    harness: motor
+    filter: dt_compat_enabled("pwm-servo")
+
