@@ -23,8 +23,8 @@ Inside this `prosthetic_arm_control` folder that you will build and flash the ap
 ### Building
 Zephyr has a powerful command line tool known as west. Use the code below to build your application.
 ```
-west build -p always -b teensy41 
-``
+west build -p always -b teensy41
+```
 Typically, west would also be used to flash the application with `west flash`, however, since the teensy series of microcontrollers is not fully supported on zephyr you cannot use this method.
 
 ### Flashing
