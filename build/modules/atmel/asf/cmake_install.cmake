@@ -39,6 +39,6 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/Users/michaeljenz/zephyrproject/zephyr/prosthetic_swing_control/build/modules/atmel/asf/common/cmake_install.cmake")
+  include("/Users/michaeljenz/zephyrproject/zephyr/prosthetic_arm_control/build/modules/atmel/asf/common/cmake_install.cmake")
 endif()
 

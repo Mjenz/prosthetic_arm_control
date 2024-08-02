@@ -39,86 +39,86 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/Users/michaeljenz/zephyrproject/zephyr/prosthetic_swing_control/build/zephyr/drivers/interrupt_controller/cmake_install.cmake")
+  include("/Users/michaeljenz/zephyrproject/zephyr/prosthetic_arm_control/build/zephyr/drivers/interrupt_controller/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/Users/michaeljenz/zephyrproject/zephyr/prosthetic_swing_control/build/zephyr/drivers/misc/cmake_install.cmake")
+  include("/Users/michaeljenz/zephyrproject/zephyr/prosthetic_arm_control/build/zephyr/drivers/misc/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/Users/michaeljenz/zephyrproject/zephyr/prosthetic_swing_control/build/zephyr/drivers/pcie/cmake_install.cmake")
+  include("/Users/michaeljenz/zephyrproject/zephyr/prosthetic_arm_control/build/zephyr/drivers/pcie/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/Users/michaeljenz/zephyrproject/zephyr/prosthetic_swing_control/build/zephyr/drivers/disk/cmake_install.cmake")
+  include("/Users/michaeljenz/zephyrproject/zephyr/prosthetic_arm_control/build/zephyr/drivers/disk/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/Users/michaeljenz/zephyrproject/zephyr/prosthetic_swing_control/build/zephyr/drivers/usb/cmake_install.cmake")
+  include("/Users/michaeljenz/zephyrproject/zephyr/prosthetic_arm_control/build/zephyr/drivers/usb/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/Users/michaeljenz/zephyrproject/zephyr/prosthetic_swing_control/build/zephyr/drivers/usb_c/cmake_install.cmake")
+  include("/Users/michaeljenz/zephyrproject/zephyr/prosthetic_arm_control/build/zephyr/drivers/usb_c/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/Users/michaeljenz/zephyrproject/zephyr/prosthetic_swing_control/build/zephyr/drivers/adc/cmake_install.cmake")
+  include("/Users/michaeljenz/zephyrproject/zephyr/prosthetic_arm_control/build/zephyr/drivers/adc/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/Users/michaeljenz/zephyrproject/zephyr/prosthetic_swing_control/build/zephyr/drivers/clock_control/cmake_install.cmake")
+  include("/Users/michaeljenz/zephyrproject/zephyr/prosthetic_arm_control/build/zephyr/drivers/clock_control/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/Users/michaeljenz/zephyrproject/zephyr/prosthetic_swing_control/build/zephyr/drivers/console/cmake_install.cmake")
+  include("/Users/michaeljenz/zephyrproject/zephyr/prosthetic_arm_control/build/zephyr/drivers/console/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/Users/michaeljenz/zephyrproject/zephyr/prosthetic_swing_control/build/zephyr/drivers/gpio/cmake_install.cmake")
+  include("/Users/michaeljenz/zephyrproject/zephyr/prosthetic_arm_control/build/zephyr/drivers/gpio/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/Users/michaeljenz/zephyrproject/zephyr/prosthetic_swing_control/build/zephyr/drivers/i2c/cmake_install.cmake")
+  include("/Users/michaeljenz/zephyrproject/zephyr/prosthetic_arm_control/build/zephyr/drivers/i2c/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/Users/michaeljenz/zephyrproject/zephyr/prosthetic_swing_control/build/zephyr/drivers/pwm/cmake_install.cmake")
+  include("/Users/michaeljenz/zephyrproject/zephyr/prosthetic_arm_control/build/zephyr/drivers/pwm/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/Users/michaeljenz/zephyrproject/zephyr/prosthetic_swing_control/build/zephyr/drivers/sensor/cmake_install.cmake")
+  include("/Users/michaeljenz/zephyrproject/zephyr/prosthetic_arm_control/build/zephyr/drivers/sensor/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/Users/michaeljenz/zephyrproject/zephyr/prosthetic_swing_control/build/zephyr/drivers/hwinfo/cmake_install.cmake")
+  include("/Users/michaeljenz/zephyrproject/zephyr/prosthetic_arm_control/build/zephyr/drivers/hwinfo/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/Users/michaeljenz/zephyrproject/zephyr/prosthetic_swing_control/build/zephyr/drivers/serial/cmake_install.cmake")
+  include("/Users/michaeljenz/zephyrproject/zephyr/prosthetic_arm_control/build/zephyr/drivers/serial/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/Users/michaeljenz/zephyrproject/zephyr/prosthetic_swing_control/build/zephyr/drivers/timer/cmake_install.cmake")
+  include("/Users/michaeljenz/zephyrproject/zephyr/prosthetic_arm_control/build/zephyr/drivers/timer/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/Users/michaeljenz/zephyrproject/zephyr/prosthetic_swing_control/build/zephyr/drivers/pinctrl/cmake_install.cmake")
+  include("/Users/michaeljenz/zephyrproject/zephyr/prosthetic_arm_control/build/zephyr/drivers/pinctrl/cmake_install.cmake")
 endif()
 

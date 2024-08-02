@@ -89,30 +89,37 @@ def read_accel(serial):
         t= [ ]
         sampling_rate = 1/1000
         data_received = 0
-        while data_received < 10000:
+        error = 0
+        max = 10000
+        
+        while data_received < max:
             dat_str = serial.read_until(b'\n'); 
-            dat_f = list(map(float,dat_str.split())) 
+            # print(dat_str)
+            dat_f = list(map(float,dat_str.split()))
             ref.append(dat_f[0] * (2*math.pi))  ## Ref acceleration is in turns/s/s, this converts it to rad/s/s
             data.append(dat_f[1]*(math.pi/180))  ## output position in deg comes in, here it is converted to rad and then used for accel calculation
-
+            
+            error = error + abs((dat_f[0] * (2*math.pi))-(dat_f[1]*(math.pi/180)))
             # ref.append(dat_f[0])   ## Ref acceleration is in turns/s/s, this converts it to rad/s/s
             # data.append(dat_f[1])  ## output position in deg comes in, here it is converted to rad and then used for accel calculation
-    
             t.append(data_received*sampling_rate)
- 
             # print("Getting data\n", data_received)
 
             data_received+=1
 
-        
+        average_error = error/max
+
         filtered_data = fft_filter_set(data,0.0, 1.2) 
         filtered_acceleration = calc_accel(filtered_data)
 
         plt.plot(t,ref,'r-', t[:-2],filtered_acceleration,'b-')
+
+        plt.ylim(-10, 10)
+
         # plt.plot(t,ref,'r-', t,data,'b-')
         plt.ylabel('Acceleration [rad/s/s]')
         plt.xlabel('Time [sec]')
-        plt.title("Input vs Output Acceleration, 05ms Walking Profile")
+        plt.title("Input vs Output Acceleration, 05ms Walking Profile | error = {:.4f}".format(average_error))
         plt.legend(['Input Acceleration', 'Output Acceleration']) 
 
 
@@ -149,15 +156,15 @@ def read_IMU(serial):
 
 
 def main():
-    ser = serial.Serial("/dev/tty.usbmodem2101", 9600, timeout=3.0)
+    ser = serial.Serial("/dev/tty.usbmodem101", timeout=3.0)
 
     has_quit = False
     # menu loop
     while not has_quit:
         
         try: 
-            read_accel(ser)
             # read_IMU(ser)
+            read_accel(ser)
          
             break
         except:

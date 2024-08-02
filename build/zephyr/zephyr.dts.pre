@@ -6081,7 +6081,7 @@ zephyr_udc0: &usb1 {
  };
 };
 # 0 "<command-line>" 2
-# 1 "/Users/michaeljenz/zephyrproject/zephyr/prosthetic_swing_control/boards/teensy41.overlay" 1
+# 1 "/Users/michaeljenz/zephyrproject/zephyr/prosthetic_arm_control/boards/teensy41.overlay" 1
 / {
  pin28: pin28 {
   compatible = "pwm-servo";

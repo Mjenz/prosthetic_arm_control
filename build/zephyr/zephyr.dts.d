@@ -12,4 +12,4 @@ empty_file.o: /Users/michaeljenz/zephyrproject/zephyr/misc/empty_file.c \
  /Users/michaeljenz/zephyrproject/zephyr/include/zephyr/dt-bindings/pwm/pwm.h \
  /Users/michaeljenz/zephyrproject/zephyr/boards/arm/teensy4/teensy4-pinctrl.dtsi \
  /Users/michaeljenz/zephyrproject/modules/hal/nxp/dts/nxp/nxp_imx/rt/mimxrt1062dvl6a-pinctrl.dtsi \
- /Users/michaeljenz/zephyrproject/zephyr/prosthetic_swing_control/boards/teensy41.overlay
+ /Users/michaeljenz/zephyrproject/zephyr/prosthetic_arm_control/boards/teensy41.overlay

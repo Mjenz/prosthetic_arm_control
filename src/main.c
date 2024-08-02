@@ -56,8 +56,14 @@ volatile static float angle = 130.0;
 volatile static float commanded_current = 0.0;
 volatile static float accel_profile;
 
-// static volatile float Kp = 0.010, Ki = 0.010; // Worked with 20 Kz PWM  
-static volatile float Kp = 0.02, Ki = 0.018; // Worked with 20 Kz PWM with 0.005 scale worked with 08ms
+static volatile float Kp = 0.010, Ki = 0.010, Kd = 0.0; // Worked with 20 Kz PWM  
+
+// static volatile float Kp = 0.02, Ki = 0.018; // Worked with 20 Kz PWM with 0.005 scale worked with 08ms
+
+// static volatile float Kp = 0.001, Ki = 0.0015, Kd = 0.0; // MINE
+
+// static volatile float Kp = 0.05, Ki = 0.16, Kd = 0.0; // MINE test
+
 
 static volatile float Kp_pos = 1.4, Ki_pos = 0.08, Kd_pos = 1.00;
 
@@ -69,7 +75,7 @@ bool motion_detect = false;
 int ret;
 float torque_scale;
 float max_imu_value = 0.0; float min_imu_value = 0.0;
-int steps;
+int steps;  // Not the literal amount of steps: rather a number of steps found in the sampling period of the IMU
 
 
 /* Data of ADC io-channels specified in devicetree. */
@@ -274,6 +280,7 @@ void mpu_sensor_read(void)
 			break;
 		}
 
+        // collect the imu values
         k_mutex_lock(&mpu_sensor_mutex, K_FOREVER);
         accel_x = sensor_value_to_double(&mpu_data.accelerometer[0])- 0.6;
         accel_y = sensor_value_to_double(&mpu_data.accelerometer[1]) - 9.8;
@@ -281,6 +288,7 @@ void mpu_sensor_read(void)
         accel_mag = sqrt(pow(accel_x,2) + pow(accel_y,2) + pow(accel_z,2));
         k_mutex_unlock(&mpu_sensor_mutex);
 
+        // allow roughly 3 seconds to collect enough IMU data
         if(data_count < IMU_WINDOW)
         {
 
@@ -304,12 +312,25 @@ void mpu_sensor_read(void)
             max_imu_value = max_val(ImuSamples, IMU_WINDOW);
             min_imu_value = min_val_ranged(ImuSamples, IMU_WINDOW, 500);
 
+            // loop through all IMU data 
             for(int i=1; i < IMU_WINDOW -1; i++)
-            {
+            {   
+                /*
+                if the next data point is of smaller magnitude
+                this indicates a possible step
+                */
                 if (ImuSamples[i] < prev && direction == 1)
                 {
+                    /*
+                    Filter out steps that are impossibly close together
+                    if a step is detected less than 50 data points from the last, discard it
+                    */
                     if ((i -peak_loc) > 50)
-                    {
+                    {       
+                        /*
+                        Filter out small blips by averaging surrounding values
+                        If the average is greater than 90% of the max it is a true step
+                        */
                         point_arr[0] = ImuSamples[i-1];    
                         point_arr[1] = ImuSamples[i];
                         point_arr[2] = ImuSamples[i+1];
@@ -458,8 +479,8 @@ void read_pot_adc(void)
 
 void current_control(void)
 {
-    static volatile float eint = 0;
-    float int_control = 0;
+    static volatile float eint = 0, ed = 0, e_prev = 0;
+    float int_control = 0, der_control = 0;
     float output_torque, input_torque;
 
     k_sleep(K_SECONDS(5));
@@ -490,6 +511,11 @@ void current_control(void)
         eint = eint + error;
         int_control = Ki*eint;
 
+        ed = (error - e_prev) / 0.005;
+        der_control = Kd*ed;
+
+        e_prev = error;
+
         if(int_control > 10.0)
         {
             int_control = 10.0;
@@ -498,9 +524,8 @@ void current_control(void)
         {
             int_control = -10.0;
         }
-        
 
-        float u = Kp*error + int_control;
+        float u = Kp*error + int_control + der_control;
 
         if (accel_profile > 0.0)
         {
@@ -603,24 +628,67 @@ void torque_profile_signals(void)
                     break;
                 }
                 torque_scale = 0.0;
-                
-                
-                if(steps > 1)
+                // code for single speed 
+                // torque = Torque_Profile_05[i];
+                // accel_profile = Accel_Profile_05[i];   
+ 
+                // torque = Torque_Profile_08[i];
+                // accel_profile = Accel_Profile_08[i];
+
+                // max_torque = min_val(Torque_Profile_08, DATA_SAMPLES);
+                // torque_scale = (max_torque * 0.005)*1000.0;
+
+
+                //  DO NOT USE 10
+
+                // torque = Torque_Profile_10[i];
+                // accel_profile = Accel_Profile_10[i];
+
+                // max_torque = min_val(Torque_Profile_10, DATA_SAMPLES);
+                // torque_scale = (max_torque * 0.005)*1000.0;
+
+                torque = Torque_Profile_SIN[i];
+                accel_profile = Accel_Profile_SIN[i];
+
+                max_torque = min_val(Torque_Profile_SIN, DATA_SAMPLES);
+                torque_scale = (max_torque * 0.005)*1000.0;
+
+                // code for adaptive speed change
+                // if(steps > 1)
+                if(1)
                 {
-                    torque = Torque_Profile_05[i];
-                    accel_profile = Accel_Profile_05[i];
+                    // torque = Torque_Profile_05[i];
+                    // accel_profile = Accel_Profile_05[i];
+
+                    // max_torque = min_val(Torque_Profile_05, DATA_SAMPLES);
+                    // torque_scale = (max_torque * 0.005)*1000.0;
+
+                    // torque = Torque_Profile_08[i];
+                    // accel_profile = Accel_Profile_08[i];
+
+                    // max_torque = min_val(Torque_Profile_08, DATA_SAMPLES);
+                    // torque_scale = (max_torque * 0.005)*1000.0;
+
+                    // torque = Torque_Profile_10[i];
+                    // accel_profile = Accel_Profile_10[i];
+
+                    // max_torque = min_val(Torque_Profile_10, DATA_SAMPLES);
+                    // torque_scale = (max_torque * 0.005)*1000.0;
 
                 }
-                else if (steps > 9 && steps < 20)
-                {
-                    torque = Torque_Profile_08[i];
-                    accel_profile = Accel_Profile_08[i];
+                // else if (steps > 9 && steps < 20)
+                // else if (steps > 7 && steps < 20)
+                // {
+                //     torque = Torque_Profile_08[i];
+                //     accel_profile = Accel_Profile_08[i];
 
-                    max_torque = min_val(Torque_Profile_08, DATA_SAMPLES);
-                    torque_scale = (max_torque * 0.005)*1000.0;
-                }
+                //     max_torque = min_val(Torque_Profile_08, DATA_SAMPLES);
+                //     torque_scale = (max_torque * 0.005)*1000.0;
+                // }
                 commanded_current = torque / KT;
-                // printk("%f\n", torque)
+
+                // printk("torque %f\n", torque);
+
                 k_sleep(K_MSEC(10));
             }
         }
@@ -633,6 +701,20 @@ void torque_profile_signals(void)
     }
 }
 
+// void data_print(void)
+// {
+//     k_mutex_lock(&pot_adc_mutex, K_FOREVER);
+
+//     float encoder = filteredEncoderReading; // get the encoder value
+
+//     float actual_angle = encoder * (180.0/4095.0);
+
+//     k_mutex_unlock(&pot_adc_mutex);
+//         /* * * * * * * * * * * * * * * * * * *
+//                     ACCEL DATA
+//         * * * * * * * * * * * * * * * * * * */
+//     printk("%f %f\n", accel_profile, actual_angle);  
+// }
 
 K_THREAD_DEFINE(motor_id, STACKSIZE, motor_control, NULL, NULL, NULL,
 PRIORITY, 0, 0);
@@ -643,18 +725,21 @@ PRIORITY, 0, 0);
 K_THREAD_DEFINE(mpu6050_id, STACKSIZE, mpu_sensor_read, NULL, NULL, NULL,
 PRIORITY, 0, 0);
 
-
 K_THREAD_DEFINE(pot_id, STACKSIZE, read_pot_adc, NULL, NULL, NULL,
 PRIORITY, 0, 0);
 
-K_THREAD_DEFINE(pos_control_id, STACKSIZE, position_control, NULL, NULL, NULL,
-PRIORITY, 0, 0);
+// Not to be used, for testing purposes only
+// K_THREAD_DEFINE(pos_control_id, STACKSIZE, position_control, NULL, NULL, NULL,
+// PRIORITY, 0, 0);
 
 K_THREAD_DEFINE(current_control_id, STACKSIZE, current_control, NULL, NULL, NULL,
 PRIORITY, 0, 0);
 
 K_THREAD_DEFINE(torque_profile, STACKSIZE, torque_profile_signals, NULL, NULL, NULL,
 PRIORITY, 0, 0);
+
+// K_THREAD_DEFINE(data_print_id, STACKSIZE,data_print, NULL, NULL, NULL,
+//  8, 0, 0 );
 
 
 int main(void)

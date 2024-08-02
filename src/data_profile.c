@@ -24007,10 +24007,6 @@ float Accel_Profile_10[DATA_SAMPLES-2]=
     0.99452
 };
 
-
-
-
-
 float Accel_Profile_12[DATA_SAMPLES-2]=
 {
     0.03343,

@@ -39,11 +39,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/Users/michaeljenz/zephyrproject/zephyr/prosthetic_swing_control/build/modules/hal_nxp/hal_nxp/cmake_install.cmake")
+  include("/Users/michaeljenz/zephyrproject/zephyr/prosthetic_arm_control/build/modules/hal_nxp/hal_nxp/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/Users/michaeljenz/zephyrproject/zephyr/prosthetic_swing_control/build/modules/hal_nxp/usb/cmake_install.cmake")
+  include("/Users/michaeljenz/zephyrproject/zephyr/prosthetic_arm_control/build/modules/hal_nxp/usb/cmake_install.cmake")
 endif()
 

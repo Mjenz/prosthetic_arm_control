@@ -1016,8 +1016,8 @@
 /Users/michaeljenz/zephyrproject/zephyr/modules/trusted-firmware-m/Kconfig.tfm.partitions
 /Users/michaeljenz/zephyrproject/zephyr/modules/uoscore-uedhoc/Kconfig
 /Users/michaeljenz/zephyrproject/zephyr/modules/zcbor/Kconfig
-/Users/michaeljenz/zephyrproject/zephyr/prosthetic_swing_control/build/Kconfig/Kconfig.dts
-/Users/michaeljenz/zephyrproject/zephyr/prosthetic_swing_control/build/Kconfig/Kconfig.modules
+/Users/michaeljenz/zephyrproject/zephyr/prosthetic_arm_control/build/Kconfig/Kconfig.dts
+/Users/michaeljenz/zephyrproject/zephyr/prosthetic_arm_control/build/Kconfig/Kconfig.modules
 /Users/michaeljenz/zephyrproject/zephyr/soc/Kconfig
 /Users/michaeljenz/zephyrproject/zephyr/soc/arm/Kconfig
 /Users/michaeljenz/zephyrproject/zephyr/soc/arm/arm/Kconfig

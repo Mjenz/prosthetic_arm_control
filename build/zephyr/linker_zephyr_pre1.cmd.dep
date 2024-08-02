@@ -1,8 +1,8 @@
 linker_zephyr_pre1.cmd: \
  /Users/michaeljenz/zephyrproject/zephyr/soc/arm/nxp_imx/rt/linker.ld \
- /Users/michaeljenz/zephyrproject/zephyr/prosthetic_swing_control/build/zephyr/include/generated/autoconf.h \
+ /Users/michaeljenz/zephyrproject/zephyr/prosthetic_arm_control/build/zephyr/include/generated/autoconf.h \
  /Users/michaeljenz/zephyrproject/zephyr/include/zephyr/devicetree.h \
- /Users/michaeljenz/zephyrproject/zephyr/prosthetic_swing_control/build/zephyr/include/generated/devicetree_generated.h \
+ /Users/michaeljenz/zephyrproject/zephyr/prosthetic_arm_control/build/zephyr/include/generated/devicetree_generated.h \
  /Users/michaeljenz/zephyrproject/zephyr/include/zephyr/sys/util.h \
  /Users/michaeljenz/zephyrproject/zephyr/include/zephyr/sys/util_macro.h \
  /Users/michaeljenz/zephyrproject/zephyr/include/zephyr/sys/util_internal.h \
@@ -28,12 +28,12 @@ linker_zephyr_pre1.cmd: \
  /Users/michaeljenz/zephyrproject/zephyr/include/zephyr/linker/devicetree_regions.h \
  /Users/michaeljenz/zephyrproject/zephyr/include/zephyr/linker/linker-defs.h \
  /Users/michaeljenz/zephyrproject/zephyr/include/zephyr/toolchain/common.h \
- /Users/michaeljenz/zephyrproject/zephyr/prosthetic_swing_control/build/zephyr/include/generated/offsets.h \
+ /Users/michaeljenz/zephyrproject/zephyr/prosthetic_arm_control/build/zephyr/include/generated/offsets.h \
  /Users/michaeljenz/zephyrproject/zephyr/include/zephyr/linker/linker-tool.h \
  /Users/michaeljenz/zephyrproject/zephyr/include/zephyr/linker/linker-tool-gcc.h \
  /Users/michaeljenz/zephyrproject/zephyr/include/zephyr/sys/mem_manage.h \
  /Users/michaeljenz/zephyrproject/zephyr/include/zephyr/linker/rel-sections.ld \
- /Users/michaeljenz/zephyrproject/zephyr/prosthetic_swing_control/build/zephyr/include/generated/snippets-rom-start.ld \
+ /Users/michaeljenz/zephyrproject/zephyr/prosthetic_arm_control/build/zephyr/include/generated/snippets-rom-start.ld \
  /Users/michaeljenz/zephyrproject/zephyr/include/../soc/arm/nxp_imx/rt/boot_header.ld \
  /Users/michaeljenz/zephyrproject/zephyr/include/../arch/common/rom_start_offset.ld \
  /Users/michaeljenz/zephyrproject/zephyr/include/../arch/arm/core/aarch32/vector_table.ld \
@@ -51,23 +51,23 @@ linker_zephyr_pre1.cmd: \
  /Users/michaeljenz/zephyrproject/zephyr/include/zephyr/linker/common-rom/common-rom-debug.ld \
  /Users/michaeljenz/zephyrproject/zephyr/include/zephyr/linker/common-rom/common-rom-misc.ld \
  /Users/michaeljenz/zephyrproject/zephyr/include/zephyr/linker/thread-local-storage.ld \
- /Users/michaeljenz/zephyrproject/zephyr/prosthetic_swing_control/build/zephyr/include/generated/snippets-rodata.ld \
+ /Users/michaeljenz/zephyrproject/zephyr/prosthetic_arm_control/build/zephyr/include/generated/snippets-rodata.ld \
  /Users/michaeljenz/zephyrproject/zephyr/include/zephyr/linker/kobject-rom.ld \
  /Users/michaeljenz/zephyrproject/zephyr/include/zephyr/linker/cplusplus-rom.ld \
- /Users/michaeljenz/zephyrproject/zephyr/prosthetic_swing_control/build/zephyr/include/generated/snippets-ram-sections.ld \
+ /Users/michaeljenz/zephyrproject/zephyr/prosthetic_arm_control/build/zephyr/include/generated/snippets-ram-sections.ld \
  /Users/michaeljenz/zephyrproject/zephyr/include/../arch/common/nocache.ld \
- /Users/michaeljenz/zephyrproject/zephyr/prosthetic_swing_control/build/zephyr/include/generated/snippets-nocache-section.ld \
+ /Users/michaeljenz/zephyrproject/zephyr/prosthetic_arm_control/build/zephyr/include/generated/snippets-nocache-section.ld \
  /Users/michaeljenz/zephyrproject/zephyr/include/../../modules/hal/nxp/mcux/nocache.ld \
  /Users/michaeljenz/zephyrproject/zephyr/include/../arch/common/ramfunc.ld \
- /Users/michaeljenz/zephyrproject/zephyr/prosthetic_swing_control/build/zephyr/include/generated/snippets-ramfunc-section.ld \
+ /Users/michaeljenz/zephyrproject/zephyr/prosthetic_arm_control/build/zephyr/include/generated/snippets-ramfunc-section.ld \
  /Users/michaeljenz/zephyrproject/zephyr/include/../../modules/hal/nxp/mcux/quick_access_code.ld \
- /Users/michaeljenz/zephyrproject/zephyr/prosthetic_swing_control/build/zephyr/include/generated/snippets-rwdata.ld \
+ /Users/michaeljenz/zephyrproject/zephyr/prosthetic_arm_control/build/zephyr/include/generated/snippets-rwdata.ld \
  /Users/michaeljenz/zephyrproject/zephyr/include/../../modules/hal/nxp/mcux/quick_access_data.ld \
  /Users/michaeljenz/zephyrproject/zephyr/include/zephyr/linker/common-ram.ld \
  /Users/michaeljenz/zephyrproject/zephyr/include/zephyr/linker/kobject-data.ld \
  /Users/michaeljenz/zephyrproject/zephyr/include/zephyr/linker/cplusplus-ram.ld \
- /Users/michaeljenz/zephyrproject/zephyr/prosthetic_swing_control/build/zephyr/include/generated/snippets-data-sections.ld \
- /Users/michaeljenz/zephyrproject/zephyr/prosthetic_swing_control/build/zephyr/include/generated/snippets-noinit.ld \
- /Users/michaeljenz/zephyrproject/zephyr/prosthetic_swing_control/build/zephyr/include/generated/snippets-sections.ld \
+ /Users/michaeljenz/zephyrproject/zephyr/prosthetic_arm_control/build/zephyr/include/generated/snippets-data-sections.ld \
+ /Users/michaeljenz/zephyrproject/zephyr/prosthetic_arm_control/build/zephyr/include/generated/snippets-noinit.ld \
+ /Users/michaeljenz/zephyrproject/zephyr/prosthetic_arm_control/build/zephyr/include/generated/snippets-sections.ld \
  /Users/michaeljenz/zephyrproject/zephyr/include/zephyr/linker/intlist.ld \
  /Users/michaeljenz/zephyrproject/zephyr/include/zephyr/linker/debug-sections.ld
